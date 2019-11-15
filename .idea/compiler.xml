@@ -7,16 +7,17 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="acf-sponge" />
         <module name="acf" />
+        <module name="acf-example" />
+        <module name="example-plugin" />
+        <module name="acf-paper" />
+        <module name="nukkit" />
+        <module name="acf-jda" />
+        <module name="acf-core" />
+        <module name="acf-velocity" />
         <module name="acf-bukkit" />
         <module name="acf-bungee" />
-        <module name="acf-core" />
-        <module name="acf-example" />
-        <module name="acf-jda" />
-        <module name="acf-paper" />
-        <module name="acf-sponge" />
-        <module name="acf-velocity" />
-        <module name="example-plugin" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -32,6 +33,7 @@
       <module name="acf-velocity" target="1.8" />
       <module name="commands" target="1.8" />
       <module name="example-plugin" target="1.8" />
+      <module name="nukkit" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -45,6 +47,7 @@
       <module name="acf-sponge" options="-parameters" />
       <module name="acf-velocity" options="-parameters" />
       <module name="example-plugin" options="-parameters" />
+      <module name="nukkit" options="-parameters" />
     </option>
   </component>
 </project>

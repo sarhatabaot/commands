@@ -68,4 +68,5 @@ public class InvalidCommandArgument extends RuntimeException {
         this.replacements = null;
         this.key = null;
     }
+
 }

@@ -187,5 +187,6 @@
         <module>sponge</module>
         <module>jda</module>
         <module>velocity</module>
+        <module>nukkit</module>
     </modules>
 </project>
