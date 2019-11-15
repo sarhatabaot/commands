@@ -63,4 +63,9 @@ public class NukkitCommandIssuer implements CommandIssuer {
         NukkitCommandIssuer that = (NukkitCommandIssuer) o;
         return Objects.equals(sender, that.sender);
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(sender);
+    }
 }

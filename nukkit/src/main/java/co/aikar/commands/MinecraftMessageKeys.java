@@ -1,11 +1,12 @@
 package co.aikar.commands;
 
 import co.aikar.locales.MessageKey;
+import co.aikar.locales.MessageKeyProvider;
 
 /**
  * @author sarhatabaot
  */
-public enum MinecraftMessageKeys {
+public enum MinecraftMessageKeys implements MessageKeyProvider {
     INVALID_WORLD,
     YOU_MUST_BE_HOLDING_ITEM,
     PLAYER_IS_VANISHED_CONFIRM,

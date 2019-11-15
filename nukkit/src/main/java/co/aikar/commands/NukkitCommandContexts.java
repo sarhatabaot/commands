@@ -19,7 +19,7 @@ public class NukkitCommandContexts extends CommandContexts<NukkitCommandExecutio
         super(manager);
 
         registerContext(OnlinePlayer.class, c -> getOnlinePlayer(c.getIssuer(), c.popFirstArg(), c.isOptional()));
-        registerContext(OnlinePlayer[].class, (c) -> {
+        registerContext(OnlinePlayer[].class, c -> {
             NukkitCommandIssuer issuer = c.getIssuer();
             final String search = c.popFirstArg();
             boolean allowMissing = c.hasFlag("allowmissing");
@@ -36,7 +36,8 @@ public class NukkitCommandContexts extends CommandContexts<NukkitCommandExecutio
                 }
             }
             if (players.isEmpty() && !c.hasFlag("allowempty")) {
-                issuer.sendError(MinecraftMessageKeys.NO_PLAYER_FOUND_SERVER, "{search}", search);
+                issuer.sendError(MinecraftMessageKeys.NO_PLAYER_FOUND_SERVER,
+                        "{search}", search);
                 throw new InvalidCommandArgument(false);
             }
             return players.toArray(new OnlinePlayer[players.size()]);
@@ -81,7 +82,7 @@ public class NukkitCommandContexts extends CommandContexts<NukkitCommandExecutio
 
     @Nullable
     OnlinePlayer getOnlinePlayer(NukkitCommandIssuer issuer, String lookup, boolean allowMissing) throws InvalidCommandArgument {
-        Player player = ACFNukkitUtil.findPlayerSmart(issuer, lookup);
+        Player player = ACFNukkitUtil.findPlayerSmart(issuer, lookup, issuer.getPlayer().getServer());
         //noinspection Duplicates
         if (player == null) {
             if (allowMissing) {
@@ -91,4 +92,6 @@ public class NukkitCommandContexts extends CommandContexts<NukkitCommandExecutio
         }
         return new OnlinePlayer(player);
     }
+
+
 }
