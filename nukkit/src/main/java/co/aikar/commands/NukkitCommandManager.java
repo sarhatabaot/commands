@@ -85,6 +85,10 @@ public class NukkitCommandManager extends CommandManager<
         //registerDependency(ItemFactory);
     }
 
+    public Command getCommand(String name) {
+        return this.commandMap.getCommands().get(name.toLowerCase(java.util.Locale.ENGLISH));
+    }
+
     @NotNull
     public SimpleCommandMap hookCommandMap() {
         SimpleCommandMap map = plugin.getServer().getCommandMap();
@@ -121,7 +125,8 @@ public class NukkitCommandManager extends CommandManager<
             NukkitRootCommand nukkitCommand = (NukkitRootCommand) entry.getValue();
             if (!nukkitCommand.isRegistered) {
                 this.plugin.getLogger().debug(commandName);
-                Command oldCommand = commandMap.getCommand(commandName); //TODO: NPE Here
+                Command oldCommand = getCommand(commandName);
+                //Command oldCommand = commandMap.getCommand(commandName); //TODO: NPE Here
                 if (oldCommand instanceof PluginIdentifiableCommand && ((PluginIdentifiableCommand) oldCommand).getPlugin() == this.plugin) {
                     knownCommands.remove(commandName);
                     oldCommand.unregister(commandMap);
