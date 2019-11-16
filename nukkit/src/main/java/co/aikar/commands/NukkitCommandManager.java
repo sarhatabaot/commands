@@ -120,7 +120,8 @@ public class NukkitCommandManager extends CommandManager<
             String commandName = entry.getKey().toLowerCase();
             NukkitRootCommand nukkitCommand = (NukkitRootCommand) entry.getValue();
             if (!nukkitCommand.isRegistered) {
-                Command oldCommand = commandMap.getCommand(commandName);
+                this.plugin.getLogger().debug(commandName);
+                Command oldCommand = commandMap.getCommand(commandName); //TODO: NPE Here
                 if (oldCommand instanceof PluginIdentifiableCommand && ((PluginIdentifiableCommand) oldCommand).getPlugin() == this.plugin) {
                     knownCommands.remove(commandName);
                     oldCommand.unregister(commandMap);
