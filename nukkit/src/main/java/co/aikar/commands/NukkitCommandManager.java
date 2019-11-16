@@ -42,7 +42,7 @@ public class NukkitCommandManager extends CommandManager<
         > {
 
     protected final Plugin plugin;
-    private final CommandMap commandMap;
+    private final SimpleCommandMap commandMap;
     private final TaskHandler localeTask;
     private final Logger logger;
     protected Map<String, Command> knownCommands = new HashMap<>();
@@ -86,7 +86,7 @@ public class NukkitCommandManager extends CommandManager<
     }
 
     @NotNull
-    public CommandMap hookCommandMap() {
+    public SimpleCommandMap hookCommandMap() {
         SimpleCommandMap map = plugin.getServer().getCommandMap();
         this.knownCommands = map.getCommands();
         return commandMap;
